@@ -1,14 +1,24 @@
 // Import necessary components and functions from react-router-dom.
 
 import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
 } from "react-router-dom";
 import { Layout } from "./pages/Layout";
 import { Home } from "./pages/Home";
 import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import { Perfumes } from "./pages/Perfumes";
+import { Maquillaje } from "./pages/Maquillaje";
+import { Cosmética } from "./pages/Cosmética";
+import { Cabello } from "./pages/Cabello";
+import { Higiene } from "./pages/Higiene";
+import { Salud } from "./pages/Salud";
+import { Regalos } from "./pages/Regalos";
+import { Información } from "./pages/Información";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,6 +35,16 @@ export const router = createBrowserRouter(
         <Route path= "/" element={<Home />} />
         <Route path="/single/:theId" element={ <Single />} />  {/* Dynamic route for single items */}
         <Route path="/demo" element={<Demo />} />
+        <Route path= "/signup" element={<Signup />} />
+        <Route path= "/login" element={<Login />} />
+        <Route path= "/perfumes" element={<Perfumes />} />
+        <Route path= "/maquillaje" element={<Maquillaje />} />
+        <Route path= "/cosmética" element={<Cosmética />} />
+        <Route path= "/cabello" element={<Cabello />} />
+        <Route path= "/higiene" element={<Higiene />} />
+        <Route path= "/salud" element={<Salud />} />
+        <Route path= "/regalos" element={<Regalos />} />
+        <Route path= "/información" element={<Información />} />
       </Route>
     )
 );
