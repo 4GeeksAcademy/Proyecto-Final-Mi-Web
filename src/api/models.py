@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Integer, String, Text, DECIMAL, ForeignKey, Enum, TIMESTAMP, func
+from sqlalchemy import Integer, String, Text, Date, DECIMAL, ForeignKey, Enum, TIMESTAMP, func
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
 # Inicializar SQLAlchemy
@@ -9,12 +9,12 @@ class User(db.Model):
     __tablename__ = 'users'
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(String(100), nullable=False)
+    lastname: Mapped[str] = mapped_column(String(100), nullable=False)
     email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(255), nullable=False)
+    birthdate: Mapped[Date] = mapped_column(Date, nullable=False)
     address: Mapped[str | None] = mapped_column(Text, nullable=True)
     phone: Mapped[str | None] = mapped_column(String(20), nullable=True)
-    created_at: Mapped[TIMESTAMP] = mapped_column(TIMESTAMP, server_default=func.current_timestamp())
-    updated_at: Mapped[TIMESTAMP] = mapped_column(TIMESTAMP, server_default=func.current_timestamp(), onupdate=func.current_timestamp())
 
 class Category(db.Model):
     __tablename__ = 'categories'

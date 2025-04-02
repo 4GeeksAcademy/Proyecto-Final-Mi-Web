@@ -34,8 +34,44 @@ const Signup = () => {
   return (
     <div className="container mt-5 d-flex justify-content-center">
       <div className="card shadow-lg p-4" style={{ width: '400px' }}>
-        <h2 className="text-center mb-4">Formulario de Registro</h2>
+        <h2 className="text-center mb-4">Nuevo usuario</h2>
         <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+            <label htmlFor="fname" className="form-label">Nombre</label>
+            <input
+              type="text"
+              className="form-control"
+              id="fname"
+              name="fname"
+              value={formData.fname}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="lname" className="form-label">Apellido</label>
+            <input
+              type="text"
+              className="form-control"
+              id="lname"
+              name="lname"
+              value={formData.lname}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="birthdate" className="form-label">Fecha de nacimiento</label>
+            <input
+              type="date"
+              className="form-control"
+              id="birthdate"
+              name="birthdate"
+              value={formData.birthdate}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Correo Electrónico</label>
             <input
