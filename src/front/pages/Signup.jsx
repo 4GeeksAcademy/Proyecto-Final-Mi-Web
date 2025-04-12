@@ -1,34 +1,60 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useGlobalReducer from '../hooks/useGlobalReducer';
 
 const Signup = () => {
-  const {dispatch} = useGlobalReducer();
+  const { dispatch } = useGlobalReducer();
   const [formData, setFormData] = useState({
+    fname: '',
+    lname: '',
+    birthdate: '',
     email: '',
-    password: ''
+    password: '',
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const BackendURL = 'https://fluffy-telegram-x5qpxwxp49jf96jj-3001.app.github.dev/api/singup'
-    fetch(BackendURL, {
-      method: 'POST',
-      headers: { "Content-Type": "application/json",},
-      body: JSON.stringify(formData)
-    })
-    dispatch({
-      type: 'save_user',
-      user: {email:formData.email}
-    })
-    console.log('Formulario enviado:', formData);
+
+    try {
+      const BackendURL = 'https://fluffy-telegram-x5qpxwxp49jf96jj-3001.app.github.dev/api/signup';
+      const response = await fetch(BackendURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.error || "Error al registrar usuario");
+        return;
+      }
+
+      const data = await response.json();
+      
+      if (data.token) {
+        dispatch({
+          type: 'save_token',
+          token: data.token,
+        });
+        sessionStorage.setItem('token', data.token);
+        navigate('/mi-cuenta');
+      } else {
+        alert('Error al registrar usuario');
+      }
+    } catch (error) {
+      alert('No se pudo conectar con el servidor. Verifica que el backend esté corriendo y CORS esté configurado.');
+    }
   };
 
   return (
@@ -36,7 +62,7 @@ const Signup = () => {
       <div className="card shadow-lg p-4" style={{ width: '400px' }}>
         <h2 className="text-center mb-4">Nuevo usuario</h2>
         <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+          <div className="mb-3">
             <label htmlFor="fname" className="form-label">Nombre</label>
             <input
               type="text"

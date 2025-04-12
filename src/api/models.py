@@ -2,7 +2,6 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Integer, String, Text, Date, DECIMAL, ForeignKey, Enum, TIMESTAMP, func
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 
-# Inicializar SQLAlchemy
 db = SQLAlchemy()
 
 class User(db.Model):
