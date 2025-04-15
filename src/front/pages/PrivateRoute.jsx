@@ -5,7 +5,7 @@ import useGlobalReducer from '../hooks/useGlobalReducer';
 const PrivateRoute = ({ children }) => {
   const { store } = useGlobalReducer();
 
-  const token = store.token || sessionStorage.getItem('token');
+  const token = store.token || localStorage.getItem('token');
 
   if (!token) {
     return <Navigate to="/login" />;

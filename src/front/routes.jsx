@@ -19,6 +19,7 @@ import { Regalos } from "./pages/Regalos";
 import { Información } from "./pages/Información";
 import PrivateRoute from './pages/PrivateRoute';
 import { MiCuenta } from './pages/MiCuenta';
+import { Carrito } from "./pages/Carrito";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +39,7 @@ export const router = createBrowserRouter(
       <Route path="/información" element={<Información />} />
       {/* Ruta privada protegida */}
       <Route path="/mi-cuenta" element={<PrivateRoute><MiCuenta /></PrivateRoute>} />
+      <Route path="/carrito" element={<PrivateRoute><Carrito /></PrivateRoute>} />
     </Route>
   )
 );

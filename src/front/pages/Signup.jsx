@@ -47,8 +47,8 @@ const Signup = () => {
           type: 'save_token',
           token: data.token,
         });
-        sessionStorage.setItem('token', data.token);
-        navigate('/mi-cuenta');
+        localStorage.setItem('token', data.token);
+        navigate('/');
       } else {
         alert('Error al registrar usuario');
       }
@@ -122,7 +122,7 @@ const Signup = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100 py-2">Registrarse</button>
+          <button type="submit" className="btn btn-outline-pink w-100 py-2">Registrarse</button>
         </form>
       </div>
     </div>

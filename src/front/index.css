@@ -1,3 +1,18 @@
 body {
-    font-family: 'Montserrat', sans-serif;
-  }
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn-outline-pink {
+  color: #f6b6d4;
+  border-color: #f6b6d4;
+}
+
+.btn-outline-pink:hover {
+  background-color: #f6b6d4;
+  color: white;
+}
+
+.dropdown-btn-outline-pink:hover {
+  background-color: #f6b6d4;
+  color: white;
+}

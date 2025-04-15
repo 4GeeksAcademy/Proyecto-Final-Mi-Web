@@ -2,7 +2,7 @@
 export const initialStore = () => {
   return {
     message: null,  // Mensaje de estado general (si lo necesitas)
-    token: null,    // Token de autenticación
+    token: localStorage.getItem("token") || null,    // Token de autenticación
     user: null,     // Información del usuario
     todos: [],      // Tareas (si en algún momento las implementas)
   };

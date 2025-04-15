@@ -31,14 +31,14 @@ const Login = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
-          sessionStorage.setItem('token', data.token);
+          localStorage.setItem('token', data.token);
 
           dispatch({
             type: 'save_token',
             token: data.token,
           });
 
-          navigate('/mi-cuenta');
+          navigate('/');
         } else {
           alert('Error al iniciar sesión');
         }
@@ -78,7 +78,7 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100 py-2">Iniciar sesión</button>
+          <button type="submit" className="btn btn-outline-pink w-100 py-2">Iniciar sesión</button>
         </form>
       </div>
     </div>
